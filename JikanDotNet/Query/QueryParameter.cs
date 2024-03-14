@@ -9,7 +9,6 @@ namespace JikanDotNet.Query;
 /// </summary>
 internal abstract class QueryParameter : IEquatable<QueryParameter>
 {
-    [NotNull]
     internal string Name { get; }
 
     protected QueryParameter(string name)

@@ -10,7 +10,11 @@ internal class JikanQuery : IQuery
 
     internal JikanQuery(params string[] endpointParts)
     {
+#if NETCOREAPP3_1_OR_GREATER
         _endpoint = string.Join('/', endpointParts);
+#else
+        _endpoint = string.Join("/", endpointParts);
+#endif
     }
 
     internal JikanQuery WithParameter(string name, bool value = true)
