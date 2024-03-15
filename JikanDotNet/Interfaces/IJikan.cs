@@ -542,6 +542,15 @@ namespace JikanDotNet
         /// <returns>Current season schedule.</returns>
         Task<PaginatedJikanResponse<ICollection<Anime>>> GetScheduleAsync(ScheduledDay scheduledDay, CancellationToken ct = default);
 
+        /// <summary>
+        /// Returns current season schedule.
+        /// </summary>
+        /// <param name="searchConfig">Configuration for advanced search.</param>
+        /// <param name="ct">Cancellation token.</param>
+        /// <returns>Current season schedule.</returns>
+        Task<PaginatedJikanResponse<ICollection<Anime>>> GetScheduleAsync(SchedulesSearchConfig searchConfig, CancellationToken ct = default);
+
+
         #endregion Schedule requests
 
         #region Top requests
@@ -635,6 +644,18 @@ namespace JikanDotNet
         /// <param name="ct">Cancellation token.</param>
         /// <returns>List of most popular reviews.</returns>
         Task<PaginatedJikanResponse<ICollection<Review>>> GetTopReviewsAsync(int page, CancellationToken ct = default);
+
+        /// <summary>
+        /// Returns list of most popular reviews.
+        /// </summary>
+        /// <param name="type">Content type of the reviews.</param>
+        /// <param name="page">Index of page folding 25 records of top ranging (e.g. 1 will return first 25 records, 2 will return record from 26 to 50 etc.)</param>
+        /// <param name="includePreliminary">Should include preliminary reviews.</param>
+        /// <param name="includeSpoilers">Should include reviews with poilers.</param>
+        /// <param name="ct">Cancellation token.</param>
+        /// <returns>List of most popular reviews.</returns>
+        Task<PaginatedJikanResponse<ICollection<Review>>> GetTopReviewsAsync(TopReviewsType type, int page,
+	        bool includePreliminary = true, bool includeSpoilers = true, CancellationToken ct = default);
 
         #endregion Top requests
 

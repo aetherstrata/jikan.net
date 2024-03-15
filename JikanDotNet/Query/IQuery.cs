@@ -8,6 +8,6 @@ internal interface IQuery
     /// <summary>
     /// Get the query to execute
     /// </summary>
-    /// <returns>The full query representation</returns>
+    /// <returns>The full query representation as string</returns>
     string GetQuery();
 }

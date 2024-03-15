@@ -1,4 +1,7 @@
-﻿namespace JikanDotNet.Interfaces
+﻿using System.Collections.Generic;
+using JikanDotNet.Query;
+
+namespace JikanDotNet.Interfaces
 {
 	/// <summary>
 	/// Interface of search config for advanced searching.
@@ -6,9 +9,9 @@
 	internal interface ISearchConfig
 	{
 		/// <summary>
-		/// Create query from current parameters for search request.
+		/// Build query parameter set from search config
 		/// </summary>
-		/// <returns>Query from current parameters for search request</returns>
-		string ConfigToString();
+		/// <returns>Current parameters for search request</returns>
+		ICollection<QueryParameter> GetQueryParameters();
 	}
 }
