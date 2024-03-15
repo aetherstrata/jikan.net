@@ -1,10 +1,14 @@
 ﻿using JikanDotNet.Exceptions;
 using System;
+using System.Text.RegularExpressions;
 
 namespace JikanDotNet.Helpers
 {
 	internal static class Guard
 	{
+		private static readonly Regex DateRegex = new(@"^\d{4}(-\d{2}){0,2}$",
+			RegexOptions.Compiled | RegexOptions.CultureInvariant);
+		
 		internal static void IsDefaultEndpoint(string endpoint, string methodName)
 		{
 			if (endpoint.Equals(DefaultHttpClientProvider.DefaultEndpoint))
@@ -44,8 +48,16 @@ namespace JikanDotNet.Helpers
 				throw new JikanValidationException("Argument must be a natural number greater than 0.", argumentName);
 			}
 		}
+
+		public static void IsGreaterThanOrEqual(long arg, long min, string argumentName)
+		{
+			if (arg < min)
+			{
+				throw new JikanValidationException($"Argument must not be less than {min}.", argumentName);
+			}
+		}
 		
-		internal static void IsLesserOrEqualThan(long arg, long max, string argumentName)
+		internal static void IsLessThanOrEqual(long arg, long max, string argumentName)
 		{
 			if (arg > max)
 			{
@@ -78,9 +90,17 @@ namespace JikanDotNet.Helpers
 		
 		internal static void IsLetter(char character, string argumentName)
 		{
-			if (!Char.IsLetter(character))
+			if (!char.IsLetter(character))
 			{
 				throw new JikanValidationException("Character must be a letter", argumentName);
+			}
+		}
+
+		public static void IsValidDate(string date, string argumentName)
+		{
+			if (!DateRegex.IsMatch(date))
+			{
+				throw new JikanValidationException("Date must be represented in one of the available formats", argumentName);
 			}
 		}
 	}
