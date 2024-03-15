@@ -2,7 +2,6 @@
 using JikanDotNet.Exceptions;
 using System.Threading.Tasks;
 using FluentAssertions.Execution;
-using FluentAssertions.Reflection;
 using Xunit;
 
 namespace JikanDotNet.Tests.CharacterTests

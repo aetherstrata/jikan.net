@@ -8,7 +8,6 @@ namespace JikanDotNet.Tests.WatchTests
 {
     public class GetWatchPopularEpisodesAsyncTests
     {
-        
         private readonly IJikan _jikan;
 
         public GetWatchPopularEpisodesAsyncTests()

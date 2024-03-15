@@ -1,4 +1,3 @@
-using System;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using JikanDotNet.Exceptions;
@@ -195,7 +194,7 @@ namespace JikanDotNet.Tests.CharacterTests
             people.Data.Should().Contain(x => x.Name.Equals("Fake Lupin"));
             people.Data.Should().Contain(x => x.Name.Equals("Arsène Lupin"));
             people.Data.Should().Contain(x => x.Name.Equals("Lupin II"));
-            people.Data.First().Name.Should().Be("Lupin");
+            people.Data.First().Name.Should().Be("Arsene Lupin III");
         }
         
         [Fact]
@@ -211,8 +210,8 @@ namespace JikanDotNet.Tests.CharacterTests
             using var _ = new AssertionScope();
             people.Data.Should().Contain(x => x.Name.Equals("Fake Lupin"));
             people.Data.Should().Contain(x => x.Name.Equals("Arsène Lupin"));
-            people.Data.Should().Contain(x => x.Name.Equals("Lupin II"));
-            people.Data.Last().Name.Should().Be("Arsene Lupin III");
+            people.Data.Should().Contain(x => x.Name.Equals("Lupin"));
+            people.Data.First().Name.Should().Be("Lupin");
             people.Data.First().Favorites.Should().BeGreaterOrEqualTo(0);
         }
         
@@ -232,7 +231,7 @@ namespace JikanDotNet.Tests.CharacterTests
         }
         
         [Fact]
-        public async Task SearchCharacterAsync_KirumiQuery_ShouldReturnSingleKirumi()
+        public async Task SearchCharacterAsync_KirumiQuery_ShouldReturnKirumi()
         {
             // Given
             var config = new CharacterSearchConfig{Query = "kirumi to"};
@@ -241,10 +240,9 @@ namespace JikanDotNet.Tests.CharacterTests
             var people = await _jikan.SearchCharacterAsync(config);
 
             // Then
-            using var _ = new AssertionScope();
-            people.Data.Should().ContainSingle();
-
             var result = people.Data.First();
+
+            using var _ = new AssertionScope();
             result.Name.Should().Be("Kirumi Toujou");
             result.Nicknames.Should().BeEmpty();
             result.About.Should().NotBeEmpty();

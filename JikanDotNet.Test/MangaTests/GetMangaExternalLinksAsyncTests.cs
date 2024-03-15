@@ -1,8 +1,6 @@
 using FluentAssertions;
 using FluentAssertions.Execution;
 using JikanDotNet.Exceptions;
-using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 

@@ -1,4 +1,3 @@
-using System;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using JikanDotNet.Exceptions;
@@ -143,7 +142,7 @@ namespace JikanDotNet.Tests.ClubTests
             var people = await _jikan.SearchClubAsync(config);
 
             // Then
-            people.Data.Should().OnlyContain(x => x.Name.StartsWith(letter));
+            people.Data.Should().OnlyContain(x => x.Name.ToUpperInvariant().StartsWith(letter));
         }
     }
 }

@@ -3,7 +3,6 @@ using FluentAssertions.Execution;
 using JikanDotNet.Exceptions;
 using System.Linq;
 using System.Threading.Tasks;
-using JikanDotNet.Consts;
 using Xunit;
 
 namespace JikanDotNet.Tests.UserTests

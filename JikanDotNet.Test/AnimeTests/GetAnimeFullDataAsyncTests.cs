@@ -2,7 +2,6 @@ using FluentAssertions;
 using FluentAssertions.Execution;
 using JikanDotNet.Exceptions;
 using System.Threading.Tasks;
-using JikanDotNet;
 using Xunit;
 
 namespace JikanDotNet.Tests.AnimeTests
